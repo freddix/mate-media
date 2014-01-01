@@ -1,11 +1,11 @@
 Summary:	MATE media programs
 Name:		mate-media
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	GPL v2+/LGPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	96a2832f157a5879f62d27fbae89da07
+# Source0-md5:	006dceed50247a659596da326a3e047d
 URL:		http://www.mate.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
