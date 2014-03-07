@@ -1,11 +1,11 @@
 Summary:	MATE media programs
 Name:		mate-media
-Version:	1.6.1
+Version:	1.8.0
 Release:	1
 License:	GPL v2+/LGPL v2+
 Group:		X11/Applications/Multimedia
-Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	006dceed50247a659596da326a3e047d
+Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	829b4a8717511a086f8b30cb6d712ad6
 URL:		http://www.mate.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -15,9 +15,7 @@ BuildRequires:	libcanberra-devel
 BuildRequires:	libtool
 BuildRequires:	libunique-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	mate-doc-utils
 BuildRequires:	pulseaudio-devel
-Requires(post,postun):	rarian
 Requires:	libcanberra-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,14 +55,12 @@ Volume control applet.
 %build
 %{__intltoolize}
 %{__libtoolize}
-mate-doc-prepare --copy
 %{__aclocal} -I m4
 %{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
 	--disable-schemas-compile	\
-	--disable-scrollkeeper		\
 	--disable-static		\
 	--disable-silent-rules
 %{__make}
@@ -84,23 +80,15 @@ gtk-update-icon-cache -ft $RPM_BUILD_ROOT%{_datadir}/mate-media/icons/mate
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%scrollkeeper_update_post
-
-%postun
-%scrollkeeper_update_postun
-
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-
 %dir %{_datadir}/mate-media
 %dir %{_datadir}/mate-media/icons
 %dir %{_datadir}/mate-media/sounds
 %dir %{_datadir}/sounds/mate
 %dir %{_datadir}/sounds/mate/default
 %dir %{_datadir}/sounds/mate/default/alerts
-
 %{_datadir}/mate-media/icons
 %{_datadir}/mate-media/sounds/mate-sounds-default.xml
 %{_datadir}/sounds/mate/default/alerts/*.ogg
@@ -109,9 +97,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mate-volume-control
 %{_desktopdir}/mate-volume-control.desktop
+%{_mandir}/man1/mate-volume-control.1*
 
 %files volume-control-applet
 %defattr(644,root,root,755)
 %{_sysconfdir}/xdg/autostart/mate-volume-control-applet.desktop
 %attr(755,root,root) %{_bindir}/mate-volume-control-applet
+%{_mandir}/man1/mate-volume-control-applet.1*
 
