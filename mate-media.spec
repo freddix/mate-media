@@ -1,7 +1,7 @@
 Summary:	MATE media programs
 Name:		mate-media
 Version:	1.8.0
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
